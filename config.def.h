@@ -1,20 +1,16 @@
-/* See LICENSE file for copyright and license details. */
-
-/* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
-static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
+/* See LICENSE file for copyright and license details. */ /* appearance */ static const unsigned int borderpx  = 0;        /* border pixel of windows */ static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappih    = 8;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 8;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 8;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 8;       /* vert outer gap between windows and screen edge */
+static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 2;        /* 0 means no bar */
 static const int topbar             = 2;        /* 0 means bottom bar */
 static const char *fonts[]          = { "FuraCode Nerd Font:style=Retina,Regular:size=14" };
 static const char dmenufont[]       = "FuraCode Nerd Font:style=Retina,Regular:size=14";
-static const char col_gray1[]       = "#222222";
+static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray3[]       = "#888888";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#444444";
 static const unsigned int baralpha = 0xd0;
@@ -31,7 +27,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "切", "", "辶", "煉", "戮", "壘" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -40,7 +36,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -70,11 +66,17 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *shotcmd[]  = { "flameshot", "gui", NULL };
+static const char *volumnupcmd[] = { "amixer", "-q", "sset", "Master", "3%+", NULL };
+static const char *volumndowncmd[] = { "amixer", "-q", "sset", "Master", "3%-", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+  { MODKEY,                       XK_s,      spawn,          {.v = shotcmd } },
+  { 0,                            XF86XK_AudioRaiseVolume,  spawn, {.v = volumnupcmd } },
+  { 0,                            XF86XK_AudioLowerVolume,  spawn, {.v = volumndowncmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
