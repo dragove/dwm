@@ -35,7 +35,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "Gimp",     NULL,       NULL,       0,            0,           -1 },
 	{ "Firefox",  NULL,       NULL,       0,            0,           -1 },
 };
 
@@ -69,6 +69,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *shotcmd[]  = { "flameshot", "gui", NULL };
 static const char *volumnupcmd[] = { "amixer", "-q", "sset", "Master", "3%+", NULL };
 static const char *volumndowncmd[] = { "amixer", "-q", "sset", "Master", "3%-", NULL };
+static const char *slock[] = { "slock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
