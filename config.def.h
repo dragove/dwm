@@ -5,7 +5,7 @@ static const unsigned int gappoh    = 8;       /* horiz outer gap between window
 static const unsigned int gappov    = 8;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 2;        /* 0 means no bar */
-static const int topbar             = 2;        /* 0 means bottom bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "FuraCode Nerd Font:style=Retina,Regular:size=14" };
 static const char dmenufont[]       = "FuraCode Nerd Font:style=Retina,Regular:size=14";
 static const char col_gray1[]       = "#000000";
@@ -69,7 +69,6 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *shotcmd[]  = { "flameshot", "gui", NULL };
 static const char *volumnupcmd[] = { "amixer", "-q", "sset", "Master", "3%+", NULL };
 static const char *volumndowncmd[] = { "amixer", "-q", "sset", "Master", "3%-", NULL };
-static const char *slock[] = { "slock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
