@@ -29,7 +29,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "切", "", "辶", "煉", "戮", "壘" };
+static const char *tags[] = { "", "", "", "切", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
